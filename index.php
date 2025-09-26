@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eficiencia Energética Empresarial</title>
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Open+Sans:300,400&display=swap" rel="stylesheet">
   <style>
     body {margin:0;font-family:'Open Sans',sans-serif;color:#333;line-height:1.6;background-color:#f7f9fc;}
@@ -79,10 +80,34 @@
     <div class="registration" id="registro">
       <h2>Regístrate y comienza a ahorrar</h2>
       <form action="procesar.php" method="POST">
-        <input type="text" name="nombre" placeholder="Nombre completo" required>
-        <input type="email" name="email" placeholder="Correo electrónico" required>
-        <input type="tel" name="telefono" placeholder="Teléfono/Celular" required>
-        <textarea name="mensaje" rows="4" placeholder="¿Qué esperas optimizar en tu empresa?" class="full-width"></textarea>
+        <!-- Nombre solo letras -->
+        <input type="text"
+              name="nombre"
+              placeholder="Nombre completo"
+              required
+              pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
+              title="Solo se permiten letras y espacios">
+        <!-- Email formato válido -->
+        <input type="email"
+              name="email"
+              placeholder="Correo electrónico"
+              required>
+        <!-- Teléfono solo números -->
+        <input type="tel"
+              name="telefono"
+              placeholder="Teléfono/Celular"
+              required
+              pattern="[0-9]+"
+              minlength="7"
+              maxlength="15"
+              title="Ingrese solo números, mínimo 7 y máximo 15">
+        <!-- Mensaje con límite de caracteres -->
+        <textarea name="mensaje"
+                  rows="4"
+                  placeholder="¿Qué esperas optimizar en tu empresa?"
+                  class="full-width"
+                  maxlength="255"
+                  required></textarea>
         <button type="submit">¡Quiero optimizar mi energía!</button>
       </form>
     </div>
