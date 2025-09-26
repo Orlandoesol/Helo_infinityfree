@@ -47,6 +47,9 @@
       <h1>Reduce hasta un 35% tus costos de energía</h1>
       <p>Soluciones inteligentes para empresas que buscan ahorrar y ser más sostenibles sin comprometer la productividad.</p>
       <a href="#registro" class="cta-btn">Solicita tu diagnóstico gratuito</a>
+      <a href="login.php" class="cta-btn" style="background-color:#007bff; margin-left:10px;">
+      Acceso Administrador
+    </a>
     </div>
   </header>
 
