@@ -1,11 +1,13 @@
-# Helo_infinityfree
-Taller 1 de Arquitectura en la nube.
-Roles:
+# 🌐 Proyecto Web en InfinityFree – Servicios Energéticos
 
-Líder / Coordinador: Juan Giraldo
-Desarrollador Backend: Emmanuel Arenilla
-Desarrollador Frontend / UI: Valentina Cedano
-Administrador de BD (DBA): Orlando Espinosa
-DevOps / Deployment: Daniel Garay
-QA / Tester: Daniel Garay
-Documentador / Presentador: Camilo ...
+Taller 1 de Arquitectura en la nube.
+
+## 👥 Integrantes y Roles
+- **Juan Giraldo** – Líder / Coordinador  
+- **Emmanuel Arenilla** – Desarrollador Backend  
+- **Valentina Cedano** – Desarrolladora Frontend / UI  
+- **Orlando Espinosa** – Administrador de Base de Datos (DBA)  
+- **Daniel Garay** – DevOps / Deployment  
+- **Daniel Garay** – QA / Tester  
+- **Camilo** – Documentador / Presentador
+
