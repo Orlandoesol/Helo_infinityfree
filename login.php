@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result && $result->num_rows > 0) {
         $userData = $result->fetch_assoc();
         $_SESSION['user'] = $username;
-        $_SESSION['rol'] = $userData['rol']; // Guardar rol
+        $_SESSION['role'] = $userData['role']; // Guardar rol
         header("Location: listar.php");
         exit();
     } else {

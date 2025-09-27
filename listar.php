@@ -9,7 +9,7 @@ if (!isset($_SESSION['user'])) {
 }
 
 // Rol del usuario
-$rol = $_SESSION['rol'] ?? 'asesor';
+$rol = $_SESSION['role'] ?? 'asesor';
 
 // Consulta de registros
 $sql = "SELECT * FROM registers ORDER BY date DESC";

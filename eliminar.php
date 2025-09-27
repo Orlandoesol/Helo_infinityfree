@@ -3,7 +3,7 @@ session_start();
 include("conexion.php");
 
 // Validar rol
-if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header("Location: listar.php");
     exit();
 }
