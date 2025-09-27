@@ -60,10 +60,10 @@ $row = $result->fetch_assoc();
 <body>
   <h2>Editar Registro</h2>
   <form method="POST">
-    <input type="text" name="nombre" value="<?php echo htmlspecialchars($row['nombre']); ?>" required>
+    <input type="text" name="nombre" value="<?php echo htmlspecialchars($row['name']); ?>" required>
     <input type="email" name="email" value="<?php echo htmlspecialchars($row['email']); ?>" required>
-    <input type="tel" name="telefono" value="<?php echo htmlspecialchars($row['telefono']); ?>" required pattern="[0-9]+" minlength="7" maxlength="15">
-    <textarea name="mensaje" required maxlength="255"><?php echo htmlspecialchars($row['mensaje']); ?></textarea>
+    <input type="tel" name="telefono" value="<?php echo htmlspecialchars($row['phone']); ?>" required pattern="[0-9]+" minlength="7" maxlength="15">
+    <textarea name="mensaje" required maxlength="255"><?php echo htmlspecialchars($row['text']); ?></textarea>
     <button type="submit">Guardar Cambios</button>
   </form>
 </body>

@@ -2,14 +2,14 @@
 include("conexion.php");
 
 // Sanitizar entradas
-$nombre   = $conn->real_escape_string($_POST['nombre']);
+$name   = $conn->real_escape_string($_POST['nombre']);
 $email    = $conn->real_escape_string($_POST['email']);
-$telefono = $conn->real_escape_string($_POST['telefono']);
-$mensaje  = $conn->real_escape_string($_POST['mensaje']);
+$phone = $conn->real_escape_string($_POST['telefono']);
+$text  = $conn->real_escape_string($_POST['mensaje']);
 
 // Insertar en la tabla
-$sql = "INSERT INTO registros (nombre, email, telefono, mensaje, fecha) 
-        VALUES ('$nombre', '$email', '$telefono', '$mensaje', NOW())";
+$sql = "INSERT INTO registers (name, email, phone, text, date) 
+        VALUES ('$name', '$email', '$phone', '$text', NOW())";
 ?>
 <!DOCTYPE html>
 <html lang="es">

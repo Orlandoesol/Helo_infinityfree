@@ -12,7 +12,7 @@ if (!isset($_SESSION['user'])) {
 $rol = $_SESSION['rol'] ?? 'asesor';
 
 // Consulta de registros
-$sql = "SELECT * FROM registros ORDER BY fecha DESC";
+$sql = "SELECT * FROM registers ORDER BY date DESC";
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
@@ -84,11 +84,11 @@ $result = $conn->query($sql);
             <?php while ($row = $result->fetch_assoc()): ?>
                 <tr>
                     <td><?php echo $row['id']; ?></td>
-                    <td><?php echo htmlspecialchars($row['nombre']); ?></td>
+                    <td><?php echo htmlspecialchars($row['name']); ?></td>
                     <td><?php echo htmlspecialchars($row['email']); ?></td>
-                    <td><?php echo htmlspecialchars($row['telefono']); ?></td>
-                    <td><?php echo htmlspecialchars($row['mensaje']); ?></td>
-                    <td><?php echo $row['fecha']; ?></td>
+                    <td><?php echo htmlspecialchars($row['phone']); ?></td>
+                    <td><?php echo htmlspecialchars($row['text']); ?></td>
+                    <td><?php echo $row['date']; ?></td>
                     <?php if ($rol === 'admin'): ?>
                         <td class="acciones">
                             <a href="editar.php?id=<?php echo $row['id']; ?>" class="editar">Editar</a>
