@@ -18,6 +18,7 @@ $result = $conn->query($sql);
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <meta charset="UTF-8">
     <title>Listado de Registros</title>
     <style>

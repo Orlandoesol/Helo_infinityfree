@@ -26,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <meta charset="UTF-8">
     <title>Login</title>
     <style>
