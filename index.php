@@ -85,7 +85,7 @@
       <form action="procesar.php" method="POST">
         <!-- Nombre solo letras -->
         <input type="text"
-              name="nombre"
+              name="name"
               placeholder="Nombre completo"
               required
               pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
@@ -97,7 +97,7 @@
               required>
         <!-- Teléfono solo números -->
         <input type="tel"
-              name="telefono"
+              name="phone"
               placeholder="Teléfono/Celular"
               required
               pattern="[0-9]+"
@@ -105,7 +105,7 @@
               maxlength="15"
               title="Ingrese solo números, mínimo 7 y máximo 15">
         <!-- Mensaje con límite de caracteres -->
-        <textarea name="mensaje"
+        <textarea name="text"
                   rows="4"
                   placeholder="¿Qué esperas optimizar en tu empresa?"
                   class="full-width"

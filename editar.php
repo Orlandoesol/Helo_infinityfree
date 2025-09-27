@@ -16,17 +16,19 @@ if (!isset($_GET['id'])) {
 $id = intval($_GET['id']);
 
 // Si se envió el formulario
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nombre   = $conn->real_escape_string($_POST['nombre']);
-    $email    = $conn->real_escape_string($_POST['email']);
-    $telefono = $conn->real_escape_string($_POST['telefono']);
-    $mensaje  = $conn->real_escape_string($_POST['mensaje']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name   = $_POST['name'] ?? '';
+    $email    = $_POST['email'] ?? '';
+    $phone = $_POST['phone'] ?? '';
+    $text  = $_POST['text'] ?? '';
 
-    $sql = "UPDATE registros 
-            SET nombre='$nombre', email='$email', telefono='$telefono', mensaje='$mensaje'
-            WHERE id=$id";
+    $update_sql = "UPDATE registers
+                   SET name = ?, email = ?, phone = ?, text = ?
+                   WHERE id = ?";
+    $update_stmt = $conn->prepare($update_sql);
+    $update_stmt->bind_param("ssssi", $name, $email, $phone, $text, $id);
 
-    if ($conn->query($sql) === TRUE) {
+    if ($update_stmt->execute()) {
         header("Location: listar.php");
         exit();
     } else {
@@ -35,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 // Obtener datos actuales
-$sql = "SELECT * FROM registros WHERE id=$id";
+$sql = "SELECT * FROM registers WHERE id=$id and deleted = '0'";
 $result = $conn->query($sql);
 
 if ($result->num_rows === 0) {
@@ -60,10 +62,10 @@ $row = $result->fetch_assoc();
 <body>
   <h2>Editar Registro</h2>
   <form method="POST">
-    <input type="text" name="nombre" value="<?php echo htmlspecialchars($row['name']); ?>" required>
+    <input type="text" name="name" value="<?php echo htmlspecialchars($row['name']); ?>" required>
     <input type="email" name="email" value="<?php echo htmlspecialchars($row['email']); ?>" required>
-    <input type="tel" name="telefono" value="<?php echo htmlspecialchars($row['phone']); ?>" required pattern="[0-9]+" minlength="7" maxlength="15">
-    <textarea name="mensaje" required maxlength="255"><?php echo htmlspecialchars($row['text']); ?></textarea>
+    <input type="tel" name="phone" value="<?php echo htmlspecialchars($row['phone']); ?>" required pattern="[0-9]+" minlength="7" maxlength="15">
+    <textarea name="text" required maxlength="255"><?php echo htmlspecialchars($row['text']); ?></textarea>
     <button type="submit">Guardar Cambios</button>
   </form>
 </body>

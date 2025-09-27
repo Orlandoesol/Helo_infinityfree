@@ -16,7 +16,7 @@ if (!isset($_GET['id'])) {
 $id = intval($_GET['id']);
 
 // Eliminar registro
-$sql = "DELETE FROM registros WHERE id=$id";
+$sql = "UPDATE registers SET DELETED = '1' WHERE id=$id";
 
 if ($conn->query($sql) === TRUE) {
     header("Location: listar.php");

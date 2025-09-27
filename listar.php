@@ -12,7 +12,7 @@ if (!isset($_SESSION['user'])) {
 $rol = $_SESSION['role'] ?? 'asesor';
 
 // Consulta de registros
-$sql = "SELECT * FROM registers ORDER BY date DESC";
+$sql = "SELECT * FROM registers where deleted = '0' ORDER BY date DESC";
 $result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
