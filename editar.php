@@ -32,13 +32,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: listar.php");
         exit();
     } else {
-        echo "Error al actualizar: " . $conn->error;
+        echo "Error al actualizar: " . $update_stmt->error;
     }
 }
 
 // Obtener datos actuales
-$sql = "SELECT * FROM registers WHERE id=$id and deleted = '0'";
-$result = $conn->query($sql);
+$sql = "SELECT * FROM registers WHERE id=? and deleted = '0'";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
 
 if ($result->num_rows === 0) {
     echo "Registro no encontrado.";
@@ -70,4 +73,8 @@ $row = $result->fetch_assoc();
   </form>
 </body>
 </html>
-<?php $conn->close(); ?>
+
+<?php 
+  $update_stmt->close();
+  $conn->close(); 
+?>

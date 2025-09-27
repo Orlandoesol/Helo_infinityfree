@@ -2,8 +2,8 @@
 include("conexion.php");
 
 // Sanitizar y obtener entradas
-$name   = trim($_POST['name'] ?? '');
-$email    = trim($_POST['email'] ?? '');
+$name  = trim($_POST['name'] ?? '');
+$email = trim($_POST['email'] ?? '');
 $phone = trim($_POST['phone'] ?? '');
 $text  = trim($_POST['text'] ?? '');
 
