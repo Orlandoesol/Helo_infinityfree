@@ -17,6 +17,9 @@ $userRole = $_SESSION['role'] ?? 'asesor';
 $userInitials = strtoupper(substr($userName, 0, 2));
 ?>
 
+<!-- Overlay para móvil -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
 <!-- Sidebar -->
 <aside class="sidebar" id="sidebar">
     <!-- Header del sidebar -->
@@ -33,7 +36,7 @@ $userInitials = strtoupper(substr($userName, 0, 2));
             <li class="nav-item">
                 <a href="<?= url('listar.php') ?>" class="nav-link <?= $currentPage === 'listar' ? 'active' : '' ?>">
                     <i class="fas fa-tachometer-alt"></i>
-                    Dashboard
+                    Tablero
                 </a>
             </li>
             
@@ -94,10 +97,10 @@ $userInitials = strtoupper(substr($userName, 0, 2));
                 <i class="fas fa-bars"></i>
             </button>
             
-            <nav aria-label="breadcrumb" class="ml-3">
+            <nav aria-label="breadcrumb" class="ml-3" style="display: none;">
                 <ol class="breadcrumb mb-0 bg-transparent p-0">
-                    <li class="breadcrumb-item">
-                        <a href="<?= url('listar.php') ?>">Dashboard</a>
+                    <li class="breadcrumb-item active">
+                        Tablero
                     </li>
                     <?php if (isset($breadcrumbs) && is_array($breadcrumbs)): ?>
                         <?php foreach ($breadcrumbs as $breadcrumb): ?>
@@ -188,23 +191,54 @@ $userInitials = strtoupper(substr($userName, 0, 2));
 document.addEventListener('DOMContentLoaded', function() {
     const sidebarToggle = document.getElementById('sidebarToggle');
     const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
     
+    // Toggle del sidebar
     if (sidebarToggle && sidebar) {
         sidebarToggle.addEventListener('click', function() {
             sidebar.classList.toggle('open');
-        });
-        
-        // Cerrar sidebar al hacer clic fuera en móviles
-        document.addEventListener('click', function(event) {
+            sidebarOverlay.classList.toggle('show');
+            
+            // Prevenir scroll del body cuando el sidebar está abierto en móvil
             if (window.innerWidth <= 1024) {
-                if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
-                    sidebar.classList.remove('open');
-                }
+                document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : '';
             }
         });
     }
     
-    // Manejar dropdowns
+    // Cerrar sidebar al hacer clic en el overlay
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', function() {
+            sidebar.classList.remove('open');
+            sidebarOverlay.classList.remove('show');
+            document.body.style.overflow = '';
+        });
+    }
+    
+    // Cerrar sidebar en móviles al redimensionar ventana
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 1024) {
+            sidebar.classList.remove('open');
+            sidebarOverlay.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Auto-cerrar sidebar al navegar en móviles
+    const navLinks = sidebar.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (window.innerWidth <= 1024) {
+                setTimeout(() => {
+                    sidebar.classList.remove('open');
+                    sidebarOverlay.classList.remove('show');
+                    document.body.style.overflow = '';
+                }, 100);
+            }
+        });
+    });
+    
+    // Manejar dropdowns del topbar
     document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
         toggle.addEventListener('click', function(e) {
             e.preventDefault();
@@ -227,5 +261,18 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+    
+    // Mejorar experiencia táctil en dispositivos móviles
+    if ('ontouchstart' in window) {
+        document.querySelectorAll('.nav-link, .btn').forEach(element => {
+            element.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.98)';
+            });
+            
+            element.addEventListener('touchend', function() {
+                this.style.transform = '';
+            });
+        });
+    }
 });
 </script>

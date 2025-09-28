@@ -194,6 +194,10 @@ body {
     font-weight: 700;
 }
 
+.section-title.text-white {
+    color: #ffffff !important;
+}
+
 .section-subtitle {
     text-align: center;
     font-size: 1.2rem;
@@ -274,6 +278,14 @@ body {
     background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
     padding: 6rem 0;
     color: white;
+}
+
+.stats-section .section-title {
+    color: white !important;
+}
+
+.stats-section .text-white {
+    color: white !important;
 }
 
 .stats-grid {

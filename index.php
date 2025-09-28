@@ -100,7 +100,7 @@ include VIEWS_PATH . '/layouts/header.php';
 <section class="stats-section" id="estadisticas">
     <div class="container">
         <div class="text-center mb-5">
-            <h2 class="section-title text-white">Resultados que hablan por sí solos</h2>
+            <h2 class="section-title text-white" style="color: white !important;">Resultados que hablan por sí solos</h2>
         </div>
         
         <div class="stats-grid">
