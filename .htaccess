@@ -1,0 +1,27 @@
+# Activar motor de reescritura
+RewriteEngine On
+
+# --- Forzar index.php sin mostrarlo ---
+# Si no se pide ningún archivo o carpeta, cargar index.php
+DirectoryIndex index.php
+
+# --- Reescribir /registros a listado.php ---
+RewriteRule ^registros$ listar.php [L]
+
+# --- Reescribir /login a login.php ---
+RewriteRule ^login$ login.php [L]
+
+# --- Evitar que se muestre index.php en la URL ---
+# Si alguien accede directamente a /index.php, redirigir a /
+RewriteCond %{THE_REQUEST} \s/index\.php[\s?]
+RewriteRule ^index\.php$ / [R=301,L]
+
+# --- Evitar que se muestre listado.php en la URL ---
+# Si alguien accede directamente a /index.php, redirigir a /
+RewriteCond %{THE_REQUEST} \s/listar\.php[\s?]
+RewriteRule ^listar\.php$ /registros [R=301,L]
+
+# --- Evitar que se muestre login.php en la URL ---
+# Si alguien accede directamente a /login.php, redirigir a /
+RewriteCond %{THE_REQUEST} \s/login\.php[\s?]
+RewriteRule ^login\.php$ /login [R=301,L]

@@ -1,124 +1,270 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eficiencia Energética Empresarial</title>
-  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600|Open+Sans:300,400&display=swap" rel="stylesheet">
-  <style>
-    body {margin:0;font-family:'Open Sans',sans-serif;color:#333;line-height:1.6;background-color:#f7f9fc;}
-    header {position:relative;height:90vh;color:white;text-align:center;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-    header::before {content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1;}
-    header img.bg {position:absolute;top:50%;left:50%;width:100%;height:100%;object-fit:cover;transform:translate(-50%,-50%);z-index:0;}
-    header .hero-content {position:relative;z-index:2;max-width:800px;padding:0 20px;}
-    header h1 {font-family:'Montserrat',sans-serif;font-size:3rem;margin-bottom:20px;font-weight:600;}
-    header p {font-size:1.3rem;margin-bottom:30px;}
-    .cta-btn {font-family:'Montserrat',sans-serif;background-color:#28a745;color:#fff;padding:15px 30px;font-size:1.1rem;text-decoration:none;border-radius:50px;transition:0.3s ease;display:inline-block;}
-    .cta-btn:hover {background-color:#218838;transform:scale(1.05);}
-    .container {max-width:900px;margin:60px auto;padding:0 20px;}
-    .features {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:40px;}
-    .feature-card {background:#fff;border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,0.1);overflow:hidden;display:flex;flex-direction:column;transition:0.3s ease;}
-    .feature-card:hover {transform:translateY(-5px);}
-    .feature-card img {width:100%;height:180px;object-fit:cover;}
-    .feature-card .feature-body {padding:20px;flex:1;}
-    .feature-card h3 {margin-top:0;font-family:'Montserrat',sans-serif;font-size:1.4rem;color:#28a745;}
-    .feature-card p {font-size:1rem;color:#666;}
-    .registration {margin-top: 60px;background:#ffffff;padding:40px 20px;border-radius:8px;box-shadow:0 4px 15px rgba(0,0,0,0.1);margin-bottom:60px;}
-    .registration h2 {font-family:'Montserrat',sans-serif;text-align:center;font-size:2rem;color:#333;margin-bottom:30px;}
-    .registration form {display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-    .registration form .full-width {grid-column:1/-1;}
-    .registration input,.registration textarea {padding:15px;border:1px solid #ccc;border-radius:5px;font-size:1rem;transition:border-color 0.3s ease;}
-    .registration input:focus,.registration textarea:focus {border-color:#28a745;outline:none;}
-    .registration button {grid-column:1/-1;padding:18px;background-color:#28a745;color:white;font-size:1.2rem;border:none;border-radius:50px;cursor:pointer;transition:0.3s ease;}
-    .registration button:hover {background-color:#218838;transform:scale(1.02);}
-    footer {text-align:center;padding:30px 20px;background-color:#2f2f2f;color:#bbb;font-size:0.9rem;}
-    footer a {color:#ddd;text-decoration:none;}
-    footer a:hover {color:#fff;}
-    @media (max-width:768px){header h1{font-size:2.2rem;}header p{font-size:1.1rem;}.registration form{grid-template-columns:1fr;}}
-  </style>
-</head>
-<body>
-  <header>
-    <!-- Imagen de eficiencia energética empresarial (sin paneles solares) -->
-    <img src="https://cdn1.corresponsables.com/wp-content/uploads/2023/08/eficiencia_energetica_0.png" 
-         alt="Eficiencia energética en empresas" class="bg">
-    <div class="hero-content">
-      <h1>Reduce hasta un 35% tus costos de energía</h1>
-      <p>Soluciones inteligentes para empresas que buscan ahorrar y ser más sostenibles sin comprometer la productividad.</p>
-      <a href="#registro" class="cta-btn">Solicita tu diagnóstico gratuito</a>
-      <a href="login.php" class="cta-btn" style="background-color:#007bff; margin-left:10px;">
-      Acceso Administrador
-    </a>
+<?php
+/**
+ * Landing Page - Energía Inteligente
+ */
+
+require_once __DIR__ . '/includes/init.php';
+
+// Obtener mensaje de sesión si existe
+$message = getMessage();
+
+$pageTitle = 'Eficiencia Energética Empresarial - Energía Inteligente';
+$pageDescription = 'Reduce hasta un 35% tus costos de energía con nuestras soluciones inteligentes para empresas';
+$bodyClass = 'landing-page';
+
+include VIEWS_PATH . '/layouts/header.php';
+?>
+
+<!-- CSS Externo para Landing Page -->
+<link rel="stylesheet" href="<?= asset('css/common.css') ?>">
+<link rel="stylesheet" href="<?= asset('css/landing.css') ?>">
+
+<!-- Navegación -->
+<nav class="navbar">
+    <div class="container">
+        <div class="navbar-container">
+            <a href="<?= url() ?>" class="navbar-brand">
+                <img src="<?= asset('images/logo.jpg') ?>" alt="Logo">
+                Energía Inteligente
+            </a>
+            
+            <ul class="navbar-nav">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                <li><a href="#estadisticas" class="nav-link">Resultados</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                <li><a href="<?= url('login') ?>" class="nav-link btn-outline-primary">🔐 Acceso</a></li>
+            </ul>
+        </div>
     </div>
-  </header>
+</nav>
 
-  <div class="container">
-    <!-- Beneficios -->
-    <section class="features">
-      <div class="feature-card">
-        <img src="https://citsolar.mx/wp-content/uploads/2024/11/image-17.png" alt="Optimización de consumo">
-        <div class="feature-body">
-          <h3>Monitoreo inteligente</h3>
-          <p>Identificamos ineficiencias en tiempo real para que tomes decisiones informadas y reduzcas tu factura energética.</p>
+<!-- Hero Section -->
+<section class="hero-section" id="inicio" style="background-image: linear-gradient(135deg, rgba(40, 167, 69, 0.8) 0%, rgba(32, 201, 151, 0.8) 100%), url('<?= asset('images/eficiencia_energetica_0.png') ?>'); background-size: cover; background-position: center center;">
+    <div class="container">
+        <div class="hero-content">
+            <h1>Reduce hasta un 35% tus costos de energía</h1>
+            <p class="lead">Soluciones inteligentes para empresas que buscan ahorrar y ser más sostenibles sin comprometer la productividad.</p>
+            <div class="hero-buttons">
+                <a href="#contacto" class="btn btn-white">
+                    📊 Solicita tu diagnóstico gratuito
+                </a>
+                <a href="<?= url('login') ?>" class="btn btn-outline-light">
+                    🔐 Acceso Administrador
+                </a>
+            </div>
         </div>
-      </div>
-      <div class="feature-card">
-        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=800" alt="Tecnología avanzada">
-        <div class="feature-body">
-          <h3>Gestión automatizada</h3>
-          <p>Implementamos sistemas que ajustan automáticamente el uso de energía, maximizando eficiencia sin afectar operaciones.</p>
-        </div>
-      </div>
-      <div class="feature-card">
-        <img src="https://climnatur.com/wp-content/uploads/2023/10/Eficiencia-energetica.-ClimNatur.jpeg" alt="Eficiencia operativa">
-        <div class="feature-body">
-          <h3>Ahorro sostenible</h3>
-          <p>Obtén resultados inmediatos en reducción de costos y fortalece la imagen de tu empresa como líder en sostenibilidad.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Formulario -->
-    <div class="registration" id="registro">
-      <h2>Regístrate y comienza a ahorrar</h2>
-      <form action="procesar.php" method="POST">
-        <!-- Nombre solo letras -->
-        <input type="text"
-              name="name"
-              placeholder="Nombre completo"
-              required
-              pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
-              title="Solo se permiten letras y espacios">
-        <!-- Email formato válido -->
-        <input type="email"
-              name="email"
-              placeholder="Correo electrónico"
-              required>
-        <!-- Teléfono solo números -->
-        <input type="tel"
-              name="phone"
-              placeholder="Teléfono/Celular"
-              required
-              pattern="[0-9]+"
-              minlength="7"
-              maxlength="15"
-              title="Ingrese solo números, mínimo 7 y máximo 15">
-        <!-- Mensaje con límite de caracteres -->
-        <textarea name="text"
-                  rows="4"
-                  placeholder="¿Qué esperas optimizar en tu empresa?"
-                  class="full-width"
-                  maxlength="255"
-                  required></textarea>
-        <button type="submit">¡Quiero optimizar mi energía!</button>
-      </form>
     </div>
-  </div>
+</section>
 
-  <footer>
-    <p>&copy; <?php echo date("Y"); ?> Energía Inteligente S.A.S.</p>
-    <p><a href="#">Política de privacidad</a> | <a href="#">Términos y condiciones</a></p>
-  </footer>
-</body>
-</html>
+<!-- Features Section -->
+<section class="features-section" id="servicios">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-title">Soluciones que transforman tu empresa</h2>
+            <p class="section-subtitle">Más de 500 empresas ya confían en nosotros</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <img src="<?= asset('images/monitoreo-inteligente.png') ?>" alt="Monitoreo Inteligente" class="feature-image">
+                <div class="feature-content">
+                    <i class="fas fa-chart-line feature-icon"></i>
+                    <h3>Monitoreo Inteligente</h3>
+                    <p>Identificamos ineficiencias en tiempo real para que tomes decisiones informadas y reduzcas tu factura energética.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <img src="<?= asset('images/gestion-automatizada.jpg') ?>" alt="Gestión Automatizada" class="feature-image">
+                <div class="feature-content">
+                    <i class="fas fa-cogs feature-icon"></i>
+                    <h3>Gestión Automatizada</h3>
+                    <p>Implementamos sistemas que ajustan automáticamente el uso de energía, maximizando eficiencia sin afectar operaciones.</p>
+                </div>
+            </div>
+            
+            <div class="feature-card">
+                <img src="<?= asset('images/ahorro-sostenible.jpeg') ?>" alt="Ahorro Sostenible" class="feature-image">
+                <div class="feature-content">
+                    <i class="fas fa-leaf feature-icon"></i>
+                    <h3>Ahorro Sostenible</h3>
+                    <p>Obtén resultados inmediatos en reducción de costos y fortalece la imagen de tu empresa como líder en sostenibilidad.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section" id="estadisticas">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title text-white">Resultados que hablan por sí solos</h2>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>35%</h3>
+                <p>Ahorro promedio en energía</p>
+            </div>
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>Empresas atendidas</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Soporte especializado</p>
+            </div>
+            <div class="stat-item">
+                <h3>10+</h3>
+                <p>Años de experiencia</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section" id="contacto">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-title">¿Listo para transformar tu empresa?</h2>
+            <p class="section-subtitle">Obtén tu diagnóstico energético gratuito</p>
+        </div>
+        
+        <?php if ($message): ?>
+        <div class="alert <?= $message['type'] ?>">
+            <?= htmlspecialchars($message['text']) ?>
+        </div>
+        <?php endif; ?>
+        
+        <div class="form-container" id="registro">
+            <form action="<?= url('procesar.php') ?>" method="POST" id="contactForm">
+                <div class="form-group">
+                    <label for="name" class="form-label">Nombre completo *</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">Email corporativo *</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="form-label">Teléfono *</label>
+                    <input type="tel" id="phone" name="phone" class="form-control" required pattern="[0-9]+" minlength="7" maxlength="15">
+                </div>
+                
+                <div class="form-group">
+                    <label for="text" class="form-label">Cuéntanos sobre tu empresa y objetivos *</label>
+                    <textarea id="text" name="text" class="form-control" required maxlength="255" 
+                            placeholder="Describe brevemente tu empresa, sector y principales desafíos energéticos..."
+                            oninput="updateCharCounter(this)"></textarea>
+                    <small class="form-text" style="color: #6c757d; font-size: 12px; text-align: right; display: block; margin-top: 5px;">
+                        <span id="charCounter">0</span>/255 caracteres
+                    </small>
+                </div>
+                
+                <button type="submit" class="btn btn-white" style="width: 100%; background: #28a745; color: white; font-size: 1.1rem;">
+                    🚀 Solicitar diagnóstico gratuito
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; <?= date('Y') ?> Energía Inteligente. Transformando empresas hacia la sostenibilidad energética.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">
+            <a href="<?= url('login') ?>" style="color: #28a745;">Panel Administrativo</a>
+        </p>
+    </div>
+</footer>
+
+<script>
+// Función para actualizar el contador de caracteres
+function updateCharCounter(textarea) {
+    const counter = document.getElementById('charCounter');
+    const currentLength = textarea.value.length;
+    const maxLength = 255;
+    
+    counter.textContent = currentLength;
+    
+    // Cambiar color según el porcentaje usado
+    if (currentLength > maxLength * 0.9) {
+        counter.style.color = '#dc3545'; // Rojo cuando está cerca del límite
+    } else if (currentLength > maxLength * 0.7) {
+        counter.style.color = '#ffc107'; // Amarillo cuando está en el 70%
+    } else {
+        counter.style.color = '#28a745'; // Verde cuando está bien
+    }
+}
+
+// Smooth scrolling para navegación
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Inicializar contador al cargar la página
+document.addEventListener('DOMContentLoaded', function() {
+    const textarea = document.getElementById('text');
+    if (textarea) {
+        updateCharCounter(textarea);
+    }
+});
+
+// Validación básica del formulario
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const text = document.getElementById('text').value.trim();
+    
+    if (!name || !email || !phone || !text) {
+        alert('Por favor completa todos los campos obligatorios.');
+        e.preventDefault();
+        return;
+    }
+    
+    if (text.length < 10) {
+        alert('El mensaje debe tener al menos 10 caracteres.');
+        e.preventDefault();
+        return;
+    }
+    
+    // Mostrar loading
+    const button = e.target.querySelector('button[type="submit"]');
+    const originalText = button.textContent;
+    button.textContent = '⏳ Enviando...';
+    button.disabled = true;
+    
+    // Re-habilitar en caso de error
+    setTimeout(() => {
+        button.textContent = originalText;
+        button.disabled = false;
+    }, 10000);
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.style.background = 'linear-gradient(135deg, #1e7e34 0%, #17a2b8 100%)';
+    } else {
+        navbar.style.background = 'linear-gradient(135deg, #28a745 0%, #20c997 100%)';
+    }
+});
+</script>
+
+<?php include VIEWS_PATH . '/layouts/footer.php'; ?>
