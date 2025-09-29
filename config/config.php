@@ -30,9 +30,9 @@ if ($host === 'localhost' || $host === '127.0.0.1') {
 }
 
 // Configuración de la base de datos
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '12345');
+define('DB_HOST', 'sql204.infinityfree.com');
+define('DB_USER', 'if0_40003724');
+define('DB_PASS', 'q5dhg3QuTpKBAPQ');
 define('DB_NAME', 'if0_40003724_helo');
 define('DB_CHARSET', 'utf8mb4');
 
