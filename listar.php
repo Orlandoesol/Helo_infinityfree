@@ -173,7 +173,7 @@ $pageTitle = 'Tablero Administrativo';
                             </a>
                             <?php endif; ?>
                             -->
-                            <a href="export.php" class="btn btn-secondary">
+                            <a href="<?= url() ?>export.php" class="btn btn-secondary">
                                 <i class="fas fa-file-csv"></i>
                                 Exportar CSV
                             </a>
