@@ -11,6 +11,9 @@ RewriteRule ^registros$ listar.php [L]
 # --- Reescribir /login a login.php ---
 RewriteRule ^login$ login.php [L]
 
+# --- Reescribir /exportar a exportar.php ---
+RewriteRule ^exportar$ exportar.php [L]
+
 # --- Evitar que se muestre index.php en la URL ---
 # Si alguien accede directamente a /index.php, redirigir a /
 RewriteCond %{THE_REQUEST} \s/index\.php[\s?]
@@ -25,3 +28,8 @@ RewriteRule ^listar\.php$ /registros [R=301,L]
 # Si alguien accede directamente a /login.php, redirigir a /
 RewriteCond %{THE_REQUEST} \s/login\.php[\s?]
 RewriteRule ^login\.php$ /login [R=301,L]
+
+# --- Evitar que se muestre exportar.php en la URL ---
+# Si alguien accede directamente a /exportar.php, redirigir a /
+RewriteCond %{THE_REQUEST} \s/exportar\.php[\s?]
+RewriteRule ^exportar\.php$ /exportar [R=301,L]
