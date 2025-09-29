@@ -161,6 +161,7 @@ $pageTitle = 'Tablero Administrativo';
                     <div class="section-header">
                         <h2 class="section-title">Registros</h2>
                         <div>
+                            <!--
                             <a href="<?= url() ?>#registro" class="btn btn-success">
                                 <i class="fas fa-plus"></i>
                                 Nuevo Registro
@@ -171,6 +172,11 @@ $pageTitle = 'Tablero Administrativo';
                                 Nuevo Usuario
                             </a>
                             <?php endif; ?>
+                            -->
+                            <a href="export.php" class="btn btn-secondary">
+                                <i class="fas fa-file-csv"></i>
+                                Exportar CSV
+                            </a>
                         </div>
                     </div>
                     
