@@ -192,7 +192,9 @@ $pageTitle = 'Tablero Administrativo';
                                     <th>Email</th>
                                     <th>Objetivos de la empresa</th>
                                     <th>Estado</th>
-                                    <th>Acciones</th>
+                                    <?php if (hasRole('admin')): ?>
+                                        <th>Acciones</th>
+                                    <?php endif; ?>
                                 </tr>
                             </thead>
                             <tbody>
@@ -213,6 +215,7 @@ $pageTitle = 'Tablero Administrativo';
                                             <?= $register['deleted'] ? 'Inactivo' : 'Activo' ?>
                                         </span>
                                     </td>
+                                    <?php if (hasRole('admin')): ?>
                                     <td>
                                         <a href="editar.php?id=<?= $register['id'] ?>" style="color: #007bff; margin-right: 10px;">
                                             <i class="fas fa-edit"></i>
@@ -221,6 +224,7 @@ $pageTitle = 'Tablero Administrativo';
                                             <i class="fas fa-trash"></i>
                                         </a>
                                     </td>
+                                    <?php endif; ?>
                                 </tr>
                                 <?php endforeach; ?>
                             </tbody>

@@ -48,6 +48,8 @@ $userInitials = strtoupper(substr($userName, 0, 2));
             </li>
             
             <?php if (hasRole('admin')): ?>
+                
+            <!--
             <li class="nav-item">
                 <a href="<?= url('usuarios.php') ?>" class="nav-link <?= $currentPage === 'usuarios' ? 'active' : '' ?>">
                     <i class="fas fa-user-cog"></i>
@@ -68,6 +70,7 @@ $userInitials = strtoupper(substr($userName, 0, 2));
                     Configuración
                 </a>
             </li>
+            -->
             <?php endif; ?>
             
             <li class="nav-item mt-4">
