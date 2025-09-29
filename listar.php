@@ -63,7 +63,7 @@ try {
     error_log($debug_error);
 }
 
-$pageTitle = 'Dashboard Administrativo';
+$pageTitle = 'Tablero Administrativo';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -86,75 +86,14 @@ $pageTitle = 'Dashboard Administrativo';
 </head>
 <body>
     <div class="dashboard-container">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <a href="<?= url() ?>" class="sidebar-brand">
-                    <img src="<?= asset('images/logo.jpg') ?>" alt="Logo">
-                    Energía Inteligente
-                </a>
-            </div>
-            
-            <nav class="sidebar-nav">
-                <a href="<?= url('registros') ?>" class="nav-link active">
-                    <i class="fas fa-tachometer-alt"></i>
-                    Tablero
-                </a>
-                
-                <a href="<?= url('registros') ?>" class="nav-link">
-                    <i class="fas fa-users"></i>
-                    Registros
-                </a>
-                
-                <?php if (hasRole('admin')): ?>
-                <a href="#" class="nav-link">
-                    <i class="fas fa-user-cog"></i>
-                    Usuarios
-                </a>
-                
-                <a href="#" class="nav-link">
-                    <i class="fas fa-chart-bar"></i>
-                    Reportes
-                </a>
-                
-                <a href="#" class="nav-link">
-                    <i class="fas fa-cog"></i>
-                    Configuración
-                </a>
-                <?php endif; ?>
-                
-                <div class="nav-divider"></div>
-                
-                <a href="<?= url() ?>" class="nav-link">
-                    <i class="fas fa-home"></i>
-                    Ir al sitio web
-                </a>
-                
-                <a href="<?= url('logout.php') ?>" class="nav-link" style="color: #dc3545;">
-                    <i class="fas fa-sign-out-alt"></i>
-                    Cerrar sesión
-                </a>
-            </nav>
-        </aside>
-
-        <!-- Contenido principal -->
-        <main class="main-content">
-            <!-- Barra superior -->
-            <div class="topbar">
-                <div class="topbar-left">
-                    <h1 class="topbar-title">Tablero</h1>
-                </div>
-                
-                <div class="user-info">
-                    <div class="user-avatar">
-                        <?= strtoupper(substr($userName, 0, 2)) ?>
-                    </div>
-                    <div>
-                        <strong><?= htmlspecialchars($userName) ?></strong>
-                        <div style="font-size: 12px; color: #6c757d;"><?= ucfirst($userRole) ?></div>
-                    </div>
-                </div>
-            </div>
+        <?php 
+        // Configurar datos para el layout
+        $pageTitle = 'Tablero';
+        $pageSubtitle = 'Gestión de registros';
+        
+        // Incluir navegación del dashboard
+        include __DIR__ . '/views/layouts/dashboard-nav.php';
+        ?>
 
             <!-- Contenido del dashboard -->
             <div class="stats-container">
